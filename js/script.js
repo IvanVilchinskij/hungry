@@ -192,6 +192,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* Animation */
 
   var animItems = document.querySelectorAll('.anim-item');
+  var width = window.innerWidth;
 
   if (document.documentElement.clientWidth > 767) {
     if (animItems.length > 0) {
@@ -235,13 +236,19 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('resize', function () {
-    if (document.documentElement.clientWidth > 767) {
-      animItems.forEach(function (item) {
-        item.classList.remove('anim-item');
-        item.classList.remove('anim-active');
-        item.classList.add('default');
-      });
+    var newWidth = window.innerWidth;
+
+    if (width != newWidth) {
+      if (document.documentElement.clientWidth > 767) {
+        animItems.forEach(function (item) {
+          item.classList.remove('anim-item');
+          item.classList.remove('anim-active');
+          item.classList.add('default');
+        });
+      }
     }
+
+    width = newWidth;
   });
   /* Mask */
 
